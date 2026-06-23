@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Forge — AI agents and repos, sorted into what actually works</title>
+<meta name="description" content="A daily-curated directory of AI agent repositories, filtered for what's actually maintained and useful — not hype.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-glow" aria-hidden="true"></div>
+<canvas id="bg3d-canvas" aria-hidden="true"></canvas>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M12 2 L12 8 M12 16 L12 22 M2 12 L8 12 M16 12 L22 12" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="3.2"/>
+        </svg>
+      </span>
+      <span class="brand-name" data-i18n="title">Agent Forge</span>
+    </div>
+
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg>
+      <input id="search-input" type="text" data-i18n-placeholder="search_placeholder" placeholder="Search agents, tools, repos…" autocomplete="off">
+    </div>
+
+    <div class="topbar-actions">
+      <div class="zoom-control" role="group" aria-label="Page zoom">
+        <button id="zoom-out" class="zoom-btn" aria-label="Zoom out">−</button>
+        <span id="zoom-level" class="zoom-level">100%</span>
+        <button id="zoom-in" class="zoom-btn" aria-label="Zoom in">+</button>
+      </div>
+      <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">
+        <span class="lang-en active">EN</span><span class="lang-sep">/</span><span class="lang-ru">RU</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="hero-eyebrow">Updated daily · filtered by an AI evaluator, not vibes</p>
+    <h1 class="hero-title">
+      <span class="hero-line">Repos that actually</span>
+      <span class="hero-line hero-accent">do the thing.</span>
+    </h1>
+    <p class="hero-tagline" data-i18n="tagline">AI agents and repos, sorted into what actually works</p>
+    <div class="hero-stats" id="hero-stats" aria-hidden="true">
+      <div class="hero-stat"><span class="hero-stat-num" id="stat-useful">0</span><span class="hero-stat-label" data-i18n="verdict_useful">useful</span></div>
+      <div class="hero-stat"><span class="hero-stat-num" id="stat-watch">0</span><span class="hero-stat-label" data-i18n="verdict_hype">hype watch</span></div>
+      <div class="hero-stat"><span class="hero-stat-num" id="stat-categories">0</span><span class="hero-stat-label" data-i18n="categories_label">categories</span></div>
+    </div>
+  </section>
+
+  <nav class="category-rail" id="category-rail" aria-label="Categories">
+    <!-- populated by JS -->
+  </nav>
+
+  <section class="feed" id="feed" aria-live="polite">
+    <!-- populated by JS -->
+  </section>
+
+  <p class="no-results" id="no-results" hidden data-i18n="no_results">Nothing matches that search.</p>
+
+  <section class="transparency" id="transparency">
+    <button class="transparency-toggle" id="transparency-toggle" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="transparency_section">Hype &amp; broken — why these didn't make the cut</span>
+    </button>
+    <div class="transparency-body" id="transparency-body" hidden></div>
+  </section>
+
+  <section class="research" id="research-section">
+    <h2 data-i18n="research_section">Research</h2>
+    <p class="research-intro" data-i18n="research_intro">Repos we found ourselves, beyond the seed list.</p>
+    <div id="research-feed"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span data-i18n="last_updated">Last updated</span>: <time id="last-updated-time">—</time>
+  <span class="footer-sep">·</span>
+  <a href="https://github.com" id="footer-gh-link" target="_blank" rel="noopener">GitHub</a>
+</footer>
+
+<div class="signal-detail" id="signal-detail" hidden>
+  <div class="signal-detail-card" id="signal-detail-card"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.128.0/three.min.js"></script>
+<script src="assets/bg3d.js"></script>
+<script src="assets/data-loader.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
