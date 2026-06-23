@@ -1,6 +1,6 @@
 # Agent Forge
 
-A daily-curated directory of AI-agent repositories — trading bots, marketing
+A daily-curated directory of AI-agent repositories - trading bots, marketing
 agents, browser automation, video generation, agent infrastructure, and more —
 filtered for what's actually maintained and useful, not hype.
 
@@ -10,7 +10,7 @@ filtered for what's actually maintained and useful, not hype.
 
 Lists like "10 GitHub repos that print money while you sleep" circulate
 constantly on social media. The repos they link to are often real, but the
-framing rarely is — README marketing language, unverified performance
+framing rarely is - README marketing language, unverified performance
 claims, and abandoned projects get the same spotlight as genuinely solid
 tools. Agent Forge runs every candidate repo through an AI evaluator that
 checks for concrete mechanisms, real maintenance activity, and risk
