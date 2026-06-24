@@ -90,8 +90,8 @@ RESPONSE_SCHEMA = {
                 "type": "string",
                 "enum": [
                     "trading", "marketing", "browser-automation", "content-video",
-                    "agent-infra", "dev-tools", "data-research", "productivity",
-                    "finance-ops", "other",
+                    "design-ux", "agent-infra", "dev-tools", "data-research",
+                    "productivity", "finance-ops", "other",
                 ],
             },
             "verdict": {
