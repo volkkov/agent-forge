@@ -93,15 +93,17 @@
 
   function getFilteredRepos() {
     const q = state.query.trim().toLowerCase();
-    return state.repos.filter((r) => {
-      if (r.verdict !== "useful") return false;
-      if (state.activeCategory !== "all" && r.category !== state.activeCategory) return false;
-      if (!q) return true;
-      const haystack = [r.name, repoSummary(r), r.owner, ...(r.tags || [])]
-        .join(" ")
-        .toLowerCase();
-      return haystack.includes(q);
-    });
+    return state.repos
+      .filter((r) => {
+        if (r.verdict !== "useful") return false;
+        if (state.activeCategory !== "all" && r.category !== state.activeCategory) return false;
+        if (!q) return true;
+        const haystack = [r.name, repoSummary(r), r.owner, ...(r.tags || [])]
+          .join(" ")
+          .toLowerCase();
+        return haystack.includes(q);
+      })
+      .sort((a, b) => (b.stars || 0) - (a.stars || 0));
   }
 
   function renderCategoryRail() {
@@ -133,8 +135,16 @@
     });
   }
 
+  function isNewRepo(repo) {
+    if (!repo.first_seen) return false;
+    const seenDate = new Date(repo.first_seen + "T00:00:00Z");
+    const ageMs = Date.now() - seenDate.getTime();
+    return ageMs >= 0 && ageMs <= 1000 * 60 * 60 * 24 * 2; // within 2 days
+  }
+
   function rowHTML(repo) {
     const stars = repo.stars >= 1000 ? (repo.stars / 1000).toFixed(1) + "k" : repo.stars;
+    const newBadge = isNewRepo(repo) ? '<span class="row-new-badge">NEW</span>' : "";
     return `
       <article class="signal-row" data-health="${repo.health}" data-id="${repo.id}" tabindex="0" role="button" aria-label="${repo.name}">
         <div class="signal-pulse" aria-hidden="true">${pulseSVG(repo.health)}</div>
@@ -142,6 +152,7 @@
           <div class="row-title-line">
             <span class="row-name">${repo.name}</span>
             <span class="row-owner">${repo.owner}</span>
+            ${newBadge}
           </div>
           <p class="row-summary">${repoSummary(repo)}</p>
           <div class="row-tags">${(repo.tags || []).slice(0, 4).map((tg) => `<span class="row-tag">${tg}</span>`).join("")}</div>
