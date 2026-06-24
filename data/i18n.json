@@ -4,6 +4,7 @@
     { "id": "marketing", "en": "Marketing & Ads", "ru": "Маркетинг и реклама", "icon": "megaphone" },
     { "id": "browser-automation", "en": "Browser Automation", "ru": "Браузер-автоматизация", "icon": "globe" },
     { "id": "content-video", "en": "Content & Video Gen", "ru": "Контент и видео", "icon": "video" },
+    { "id": "design-ux", "en": "Design & UI/UX", "ru": "Дизайн и UI/UX", "icon": "palette" },
     { "id": "agent-infra", "en": "Agent Infrastructure", "ru": "Инфраструктура агентов", "icon": "cpu" },
     { "id": "dev-tools", "en": "Dev Tools", "ru": "Инструменты разработки", "icon": "code" },
     { "id": "data-research", "en": "Data & Research", "ru": "Данные и research", "icon": "bar-chart" },
