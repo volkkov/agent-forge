@@ -37,6 +37,7 @@
 
 html {
   background: var(--bg);
+  /* zoom is applied here via JS by adjusting root font-size */
 }
 
 body {
@@ -417,6 +418,23 @@ main {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--text-faint);
+}
+
+.row-new-badge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #06120f;
+  background: var(--teal);
+  padding: 2px 7px;
+  border-radius: 4px;
+  animation: new-glow 2s ease-in-out infinite;
+}
+
+@keyframes new-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(94,234,212,0.5); }
+  50% { box-shadow: 0 0 8px 1px rgba(94,234,212,0.5); }
 }
 
 .row-summary {
