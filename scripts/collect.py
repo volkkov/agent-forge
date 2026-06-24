@@ -7,7 +7,7 @@ keyword search) and parses known "awesome-*" list repos for additional
 links. Writes raw candidates to data/candidates.json for the evaluator
 script to process.
 
-Does NOT call the OpenAI API — this script is intentionally dumb
+Does NOT call the Anthropic API — this script is intentionally dumb
 and cheap. All judgment calls happen in evaluate.py.
 """
 
@@ -37,6 +37,11 @@ SEARCH_TOPICS = [
     "autonomous-agent",
     "llm-agent",
     "mcp-server",
+    "design-system",
+    "ui-generation",
+    "llm-router",
+    "ai-coding-agent",
+    "prompt-engineering",
 ]
 
 SEARCH_KEYWORDS = [
@@ -44,6 +49,11 @@ SEARCH_KEYWORDS = [
     "autonomous trading agent",
     "ai agent browser automation",
     "llm router agent",
+    "ai design system agent",
+    "ux ui agent skill",
+    "free llm api",
+    "ai video generation agent",
+    "claude code plugin",
 ]
 
 # Known curated lists to mine for additional candidate links.
@@ -52,6 +62,11 @@ AWESOME_LISTS = [
     ("ComposioHQ/awesome-claude-skills", "README.md"),
     ("travisvn/awesome-claude-skills", "README.md"),
     ("The-Swarm-Corporation/Awesome-Swarms-List", "README.md"),
+    ("VoltAgent/awesome-agent-skills", "README.md"),
+    ("heilcheng/awesome-agent-skills", "README.md"),
+    ("cheahjs/free-llm-api-resources", "README.md"),
+    ("hesreallyhim/awesome-claude-code", "README.md"),
+    ("Shubhamsaboo/awesome-llm-apps", "README.md"),
 ]
 
 HEADERS = {
