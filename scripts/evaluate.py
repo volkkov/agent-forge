@@ -27,9 +27,18 @@ CANDIDATES_PATH = DATA_DIR / "candidates.json"
 REPOS_PATH = DATA_DIR / "repos.json"
 I18N_PATH = DATA_DIR / "i18n.json"
 
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
-OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-4.1")
-OPENAI_API_URL = "https://api.openai.com/v1/chat/completions"
+OPENROUTER_API_KEY = os.environ.get("OPENAI_API_KEY", "")  # secret name kept as OPENAI_API_KEY for continuity
+OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
+
+# Tried in order. If the primary model errors out, is rate-limited, or times
+# out, we fall through to the next one rather than skipping the repo entirely.
+# All of these support OpenRouter's strict json_schema structured outputs.
+MODEL_FALLBACK_CHAIN = [
+    os.environ.get("OPENAI_MODEL", "openai/gpt-4.1"),
+    "anthropic/claude-sonnet-4.5",
+    "google/gemini-2.5-pro",
+    "openai/gpt-4o-mini",
+]
 
 MAX_README_CHARS = 6000
 
@@ -104,6 +113,38 @@ def fetch_readme(owner, repo, default_branch="main"):
     return ""
 
 
+def call_openrouter(model, user_content):
+    """Single attempt against one model. Returns parsed JSON dict, or raises
+    on any failure (HTTP error, bad shape, bad JSON) so the caller can decide
+    whether to fall through to the next model in the chain."""
+    payload = json.dumps({
+        "model": model,
+        "messages": [
+            {"role": "system", "content": EVAL_SYSTEM_PROMPT},
+            {"role": "user", "content": user_content},
+        ],
+        "response_format": {"type": "json_schema", "json_schema": RESPONSE_SCHEMA},
+    }).encode("utf-8")
+
+    req = Request(
+        OPENROUTER_API_URL,
+        data=payload,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+            "HTTP-Referer": "https://github.com/agent-forge",
+            "X-Title": "Agent Forge",
+        },
+        method="POST",
+    )
+
+    with urlopen(req, timeout=60) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+
+    raw_text = data["choices"][0]["message"]["content"]
+    return json.loads(raw_text)
+
+
 def call_evaluator(candidate, readme_text):
     user_content = f"""Repo: {candidate['id']}
 Description: {candidate.get('description_raw', '')}
@@ -117,44 +158,21 @@ README excerpt:
 {readme_text if readme_text else '(no README found)'}
 """
 
-    payload = json.dumps({
-        "model": OPENAI_MODEL,
-        "messages": [
-            {"role": "system", "content": EVAL_SYSTEM_PROMPT},
-            {"role": "user", "content": user_content},
-        ],
-        "response_format": {"type": "json_schema", "json_schema": RESPONSE_SCHEMA},
-    }).encode("utf-8")
+    for model in MODEL_FALLBACK_CHAIN:
+        try:
+            return call_openrouter(model, user_content)
+        except HTTPError as e:
+            body = e.read().decode("utf-8", errors="ignore")
+            print(f"  ! {model} failed (HTTP {e.code}): {body[:200]} — trying next model", file=sys.stderr)
+        except (KeyError, IndexError) as e:
+            print(f"  ! {model} returned an unexpected response shape: {e} — trying next model", file=sys.stderr)
+        except json.JSONDecodeError as e:
+            print(f"  ! {model} returned unparseable JSON: {e} — trying next model", file=sys.stderr)
+        except Exception as e:
+            print(f"  ! {model} failed ({type(e).__name__}: {e}) — trying next model", file=sys.stderr)
 
-    req = Request(
-        OPENAI_API_URL,
-        data=payload,
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {OPENAI_API_KEY}",
-        },
-        method="POST",
-    )
-
-    try:
-        with urlopen(req, timeout=60) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except HTTPError as e:
-        body = e.read().decode("utf-8", errors="ignore")
-        print(f"  ! OpenAI API error {e.code}: {body[:300]}", file=sys.stderr)
-        return None
-
-    try:
-        raw_text = data["choices"][0]["message"]["content"]
-    except (KeyError, IndexError):
-        print(f"  ! Unexpected OpenAI response shape: {json.dumps(data)[:300]}", file=sys.stderr)
-        return None
-
-    try:
-        return json.loads(raw_text)
-    except json.JSONDecodeError:
-        print(f"  ! Could not parse evaluator output: {raw_text[:300]}", file=sys.stderr)
-        return None
+    print(f"  ! All models in the fallback chain failed for {candidate['id']}", file=sys.stderr)
+    return None
 
 
 def derive_health(candidate):
@@ -183,7 +201,7 @@ def load_json(path, default):
 
 
 def main():
-    if not OPENAI_API_KEY:
+    if not OPENROUTER_API_KEY:
         print("ERROR: OPENAI_API_KEY is not set.", file=sys.stderr)
         sys.exit(1)
 
