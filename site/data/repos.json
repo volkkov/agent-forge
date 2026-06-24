@@ -308,5 +308,66 @@
     "source": "manual-seed",
     "first_seen": "2026-06-23",
     "last_checked": "2026-06-23"
+  },
+  {
+    "id": "coffeefuelbump/csv-data-summarizer-claude-skill",
+    "name": "csv-data-summarizer-claude-skill",
+    "url": "https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill",
+    "owner": "coffeefuelbump",
+    "description_raw": "A Claude Skill that automatically analyzes uploaded CSV files — generating summary statistics, detecting missing data, and creating quick visualizations using Python and pandas.",
+    "summary_en": "Flat summary figures based on described capabilities without evidence of specific functionality. Skip this unless it's a straightforward statistical summary.",
+    "summary_ru": "The README states it provides instant analysis without hints; lacks concrete examples. Not verified as having basic mechanics.",
+    "category": "data-research",
+    "tags": [
+      "hype",
+      "verified"
+    ],
+    "stars": 412,
+    "forks": 58,
+    "last_commit_at": "2025-10-16T20:20:06Z",
+    "created_at": "2025-10-16T19:28:59Z",
+    "ci_status": "unknown",
+    "health": "stale",
+    "verdict": "hype",
+    "verdict_reason_en": "No concrete mechanism described; relies on vague claims about capability matching undescribed needs.",
+    "verdict_reason_ru": "No evidence of data processing or visualization capabilities. May be misleading marketing.",
+    "risk_flags": [
+      "dubious_install_link",
+      "missing_quality_checks"
+    ],
+    "source": "awesome-list",
+    "first_seen": "2026-06-24",
+    "last_checked": "2026-06-24"
+  },
+  {
+    "id": "jthack/ffuf_claude_skill",
+    "name": "ffuf_claude_skill",
+    "url": "https://github.com/jthack/ffuf_claude_skill",
+    "owner": "jthack",
+    "description_raw": "This is a \"skill\" for claude to use FFUF.",
+    "summary_en": "Profile skill focused on official tool integration for defense testing.",
+    "summary_ru": "Demonstrates use of FFUF via pre-configured agent with basic guidance for limited operation.",
+    "category": "agent-infra",
+    "tags": [
+      "safe",
+      "verified",
+      "css"
+    ],
+    "stars": 192,
+    "forks": 18,
+    "last_commit_at": "2025-10-16T19:39:14Z",
+    "created_at": "2025-10-16T19:33:05Z",
+    "ci_status": "unknown",
+    "health": "stale",
+    "verdict": "hype",
+    "verdict_reason_en": "README specifies ffuf integration for secure optimization, lacks concrete mechanisms, ignores safety disclaimers. Clearly hype with irrelevant superlatives.",
+    "verdict_reason_ru": "README describes tool for *testing*, not broader opportunistic use; omits critical safety measures; formal disclaimers absent. Verdict RATED HYPER- HARD HYPE requiring minimum substantiation.",
+    "risk_flags": [
+      "unauthorized testing",
+      "knowledge sharing with potential misuse"
+    ],
+    "source": "awesome-list",
+    "first_seen": "2026-06-24",
+    "last_checked": "2026-06-24"
   }
 ]
