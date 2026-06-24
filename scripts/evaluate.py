@@ -32,23 +32,27 @@ OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Tried in order. If the primary model errors out, is rate-limited, or times
 # out, we fall through to the next one rather than skipping the repo entirely.
-# All of these are free-tier on OpenRouter. openrouter/free auto-picks among
-# whatever free models currently support the request's needs (including
-# structured outputs); the explicit :free models below are a backup in case
-# the router itself is unavailable or picks something that doesn't support
-# our schema.
+# All of these are free-tier on OpenRouter as of June 2026. openrouter/free
+# auto-picks among whatever free models currently support the request's
+# needs (including structured outputs); the explicit :free models below are
+# a backup in case the router itself is unavailable or picks something that
+# doesn't support our schema. Free-tier model availability rotates over
+# time — if every model in this chain starts 404ing, check
+# https://openrouter.ai/models/?q=free for current slugs.
 MODEL_FALLBACK_CHAIN = [
     os.environ.get("OPENAI_MODEL", "openrouter/free"),
-    "meta-llama/llama-4-maverick:free",
-    "meta-llama/llama-4-scout:free",
     "deepseek/deepseek-r1:free",
+    "meta-llama/llama-3.3-70b-instruct:free",
+    "qwen/qwen-2.5-7b-instruct:free",
 ]
 
-# Free-tier models have tight daily/per-minute rate limits. Cap how many
-# candidates we evaluate in a single run so one workflow doesn't burn through
-# the whole daily quota; remaining candidates simply get picked up tomorrow
-# (collect.py re-discovers them, and already-seen ids are skipped fast).
-MAX_EVALUATIONS_PER_RUN = int(os.environ.get("MAX_EVALUATIONS_PER_RUN", "40"))
+# Free-tier accounts get ~50 requests/day total (across all free models
+# combined) until $10+ has ever been added to the account, after which the
+# daily floor rises to 1000. Keep this comfortably under 50 so one run can't
+# burn the whole day's quota by itself — remaining candidates get picked up
+# automatically tomorrow (collect.py re-discovers them, already-evaluated
+# ids are simply re-checked or skipped based on sort priority below).
+MAX_EVALUATIONS_PER_RUN = int(os.environ.get("MAX_EVALUATIONS_PER_RUN", "20"))
 
 MAX_README_CHARS = 6000
 
@@ -129,7 +133,7 @@ def call_openrouter(model, user_content):
     whether to fall through to the next model in the chain."""
     payload = json.dumps({
         "model": model,
-        "max_tokens": 800,
+        "max_tokens": 1200,
         "messages": [
             {"role": "system", "content": EVAL_SYSTEM_PROMPT},
             {"role": "user", "content": user_content},
@@ -153,6 +157,8 @@ def call_openrouter(model, user_content):
         data = json.loads(resp.read().decode("utf-8"))
 
     raw_text = data["choices"][0]["message"]["content"]
+    if not raw_text or not raw_text.strip():
+        raise ValueError(f"empty response content (finish_reason={data['choices'][0].get('finish_reason')})")
     return json.loads(raw_text)
 
 
