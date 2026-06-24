@@ -32,13 +32,23 @@ OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Tried in order. If the primary model errors out, is rate-limited, or times
 # out, we fall through to the next one rather than skipping the repo entirely.
-# All of these support OpenRouter's strict json_schema structured outputs.
+# All of these are free-tier on OpenRouter. openrouter/free auto-picks among
+# whatever free models currently support the request's needs (including
+# structured outputs); the explicit :free models below are a backup in case
+# the router itself is unavailable or picks something that doesn't support
+# our schema.
 MODEL_FALLBACK_CHAIN = [
-    os.environ.get("OPENAI_MODEL", "openai/gpt-4.1"),
-    "anthropic/claude-sonnet-4.5",
-    "google/gemini-2.5-pro",
-    "openai/gpt-4o-mini",
+    os.environ.get("OPENAI_MODEL", "openrouter/free"),
+    "meta-llama/llama-4-maverick:free",
+    "meta-llama/llama-4-scout:free",
+    "deepseek/deepseek-r1:free",
 ]
+
+# Free-tier models have tight daily/per-minute rate limits. Cap how many
+# candidates we evaluate in a single run so one workflow doesn't burn through
+# the whole daily quota; remaining candidates simply get picked up tomorrow
+# (collect.py re-discovers them, and already-seen ids are skipped fast).
+MAX_EVALUATIONS_PER_RUN = int(os.environ.get("MAX_EVALUATIONS_PER_RUN", "40"))
 
 MAX_README_CHARS = 6000
 
@@ -119,6 +129,7 @@ def call_openrouter(model, user_content):
     whether to fall through to the next model in the chain."""
     payload = json.dumps({
         "model": model,
+        "max_tokens": 800,
         "messages": [
             {"role": "system", "content": EVAL_SYSTEM_PROMPT},
             {"role": "user", "content": user_content},
@@ -170,6 +181,7 @@ README excerpt:
             print(f"  ! {model} returned unparseable JSON: {e} — trying next model", file=sys.stderr)
         except Exception as e:
             print(f"  ! {model} failed ({type(e).__name__}: {e}) — trying next model", file=sys.stderr)
+        time.sleep(2)  # give the next free-tier provider a clean slate
 
     print(f"  ! All models in the fallback chain failed for {candidate['id']}", file=sys.stderr)
     return None
@@ -207,6 +219,15 @@ def main():
 
     candidates = load_json(CANDIDATES_PATH, [])
     existing_repos = {r["id"]: r for r in load_json(REPOS_PATH, [])}
+
+    # Prioritize candidates we haven't evaluated before, then by stars, so a
+    # capped run still makes forward progress on new repos instead of
+    # re-checking the same already-known ones every day.
+    def sort_key(c):
+        already_seen = c["id"] in existing_repos
+        return (already_seen, -(c.get("stars") or 0))
+
+    candidates = sorted(candidates, key=sort_key)[:MAX_EVALUATIONS_PER_RUN]
 
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     updated = []
