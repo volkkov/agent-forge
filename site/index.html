@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agent Forge — AI agents and repos, sorted into what actually works</title>
 <meta name="description" content="A daily-curated directory of AI agent repositories, filtered for what's actually maintained and useful — not hype.">
-<link rel="icon" href="data:,">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjE0IiBmaWxsPSIjMEIwRTE0Ii8+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyLDMyKSI+CjxwYXRoIGQ9Ik0wLC0yNCBMNSwtNSBMMjQsMCBMNSw1IEwwLDI0IEwtNSw1IEwtMjQsMCBMLTUsLTUgWiIgZmlsbD0iIzVFRUFENCIvPgo8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iNiIgZmlsbD0iIzBCMEUxNCIvPgo8L2c+Cjwvc3ZnPgo=" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -40,6 +40,10 @@
         <span id="zoom-level" class="zoom-level">100%</span>
         <button id="zoom-in" class="zoom-btn" aria-label="Zoom in">+</button>
       </div>
+      <a href="https://t.me/AgentForgeSignal" target="_blank" rel="noopener" class="tg-btn" aria-label="Join Telegram channel">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M21.05 3.76L17.85 19.6c-.24 1.07-.87 1.33-1.76.83l-4.86-3.58-2.35 2.26c-.26.26-.48.48-.97.48l.35-4.94 8.99-8.12c.39-.35-.09-.54-.6-.2L6.4 12.55l-4.84-1.51c-1.05-.33-1.07-1.05.22-1.55L19.67 2.5c.88-.33 1.65.2 1.38 1.26z"/></svg>
+        <span data-i18n="join_telegram">Telegram</span>
+      </a>
       <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">
         <span class="lang-en active">EN</span><span class="lang-sep">/</span><span class="lang-ru">RU</span>
       </button>
@@ -59,6 +63,17 @@
       <div class="hero-stat"><span class="hero-stat-num" id="stat-useful">0</span><span class="hero-stat-label" data-i18n="verdict_useful">useful</span></div>
       <div class="hero-stat"><span class="hero-stat-num" id="stat-watch">0</span><span class="hero-stat-label" data-i18n="verdict_hype">hype watch</span></div>
       <div class="hero-stat"><span class="hero-stat-num" id="stat-categories">0</span><span class="hero-stat-label" data-i18n="categories_label">categories</span></div>
+    </div>
+
+    <div class="hero-cta-row">
+      <a href="https://t.me/AgentForgeSignal" target="_blank" rel="noopener" class="cta-primary">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21.05 3.76L17.85 19.6c-.24 1.07-.87 1.33-1.76.83l-4.86-3.58-2.35 2.26c-.26.26-.48.48-.97.48l.35-4.94 8.99-8.12c.39-.35-.09-.54-.6-.2L6.4 12.55l-4.84-1.51c-1.05-.33-1.07-1.05.22-1.55L19.67 2.5c.88-.33 1.65.2 1.38 1.26z"/></svg>
+        <span data-i18n="get_daily_finds">Get daily finds in Telegram</span>
+      </a>
+      <button id="share-x-btn" class="cta-secondary" aria-label="Share on X">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.9 2H22l-7.4 8.4L23 22h-7l-5.5-7.2L4.8 22H1.6l7.9-9-7.9-11h7.2l5 6.6L18.9 2zm-2.5 18h1.9L7.7 4H5.7l10.7 16z"/></svg>
+        <span data-i18n="share">Share</span>
+      </button>
     </div>
   </section>
 
@@ -90,7 +105,9 @@
 <footer class="site-footer">
   <span data-i18n="last_updated">Last updated</span>: <time id="last-updated-time">—</time>
   <span class="footer-sep">·</span>
-  <a href="https://github.com" id="footer-gh-link" target="_blank" rel="noopener">GitHub</a>
+  <a href="https://github.com/volkkov/agent-forge" target="_blank" rel="noopener">GitHub</a>
+  <span class="footer-sep">·</span>
+  <a href="https://t.me/AgentForgeSignal" target="_blank" rel="noopener">Telegram</a>
 </footer>
 
 <div class="signal-detail" id="signal-detail" hidden>
