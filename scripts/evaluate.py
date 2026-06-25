@@ -72,6 +72,15 @@ last commit date, archived status). Judge it on:
    crypto/wallet requirements not mentioned in the headline description, safety concerns?
 4. Is this a near-duplicate of a well-known tool with no meaningful differentiation?
 
+Important: "broken" means the project is abandoned, archived, or its CI/build is failing —
+not merely that the README lacks marketing polish or independent benchmarks. A repo with
+high stars, a recent last-pushed date, and an active release history is evidence of a real,
+maintained project even if its README is sparse or the excerpt you received got truncated.
+In that case, prefer "useful" (or "hype" if the README itself is mostly unverifiable claims)
+over "broken". Reserve "broken" for concrete evidence of abandonment: an explicit archival
+notice, a redirect to a successor repo, failing CI badges, or a last-pushed date that is old
+relative to today's date.
+
 Fill in: category, verdict, a bilingual one-or-two-sentence summary of what it concretely does \
 (no marketing language), bilingual reasoning for the verdict citing specific evidence from the \
 README/metadata, any risk flags, and short kebab-case tags.
