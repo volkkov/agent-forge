@@ -37,7 +37,6 @@
 
 html {
   background: var(--bg);
-  /* zoom is applied here via JS by adjusting root font-size */
 }
 
 body {
@@ -237,6 +236,83 @@ body {
 
 .lang-toggle .active { color: var(--teal); }
 .lang-sep { margin: 0 4px; opacity: 0.4; }
+
+.tg-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 7px 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.tg-btn svg { color: #5EEAD4; flex-shrink: 0; }
+
+.tg-btn:hover {
+  border-color: var(--teal-dim);
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+@media (max-width: 700px) {
+  .tg-btn span { display: none; }
+  .tg-btn { padding: 7px 9px; }
+}
+
+.hero-cta-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal);
+  color: #06120f;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.cta-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(94,234,212,0.3);
+}
+
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.cta-secondary:hover {
+  border-color: var(--teal-dim);
+  color: var(--text);
+}
 
 /* ---------- hero ---------- */
 
