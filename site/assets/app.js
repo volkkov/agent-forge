@@ -305,6 +305,16 @@
     els.zoomIn.addEventListener("click", () => setZoom(10));
     els.zoomOut.addEventListener("click", () => setZoom(-10));
 
+    const shareBtn = document.getElementById("share-x-btn");
+    if (shareBtn) {
+      shareBtn.addEventListener("click", () => {
+        const text = "Agent Forge — a daily-filtered directory of AI agent repos. No hype, just an AI reviewer checking what actually works.";
+        const url = window.location.href;
+        const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        window.open(shareUrl, "_blank", "noopener,width=550,height=420");
+      });
+    }
+
     els.transparencyToggle.addEventListener("click", () => {
       const expanded = els.transparencyToggle.getAttribute("aria-expanded") === "true";
       els.transparencyToggle.setAttribute("aria-expanded", String(!expanded));
