@@ -27,8 +27,30 @@ CANDIDATES_PATH = DATA_DIR / "candidates.json"
 REPOS_PATH = DATA_DIR / "repos.json"
 I18N_PATH = DATA_DIR / "i18n.json"
 
-OPENROUTER_API_KEY = os.environ.get("OPENAI_API_KEY", "")  # secret name kept as OPENAI_API_KEY for continuity
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
+
+# Multiple OpenRouter keys (e.g. your own + friends' free-tier keys) let us
+# spread evaluation load across several independent daily quotas instead of
+# being capped at one account's ~50 req/day. Set OPENAI_API_KEY to your main
+# key and, optionally, OPENAI_API_KEY_2 / OPENAI_API_KEY_3 / ... for backups.
+# Each candidate tries keys in order and falls through on quota/auth errors,
+# so a single exhausted key doesn't stop the run.
+def _load_api_keys():
+    keys = []
+    primary = os.environ.get("OPENAI_API_KEY", "")
+    if primary:
+        keys.append(primary)
+    i = 2
+    while True:
+        extra = os.environ.get(f"OPENAI_API_KEY_{i}", "")
+        if not extra:
+            break
+        keys.append(extra)
+        i += 1
+    return keys
+
+
+OPENROUTER_API_KEYS = _load_api_keys()
 
 # Tried in order. If the primary model errors out, is rate-limited, or times
 # out, we fall through to the next one rather than skipping the repo entirely.
@@ -136,10 +158,10 @@ def fetch_readme(owner, repo, default_branch="main"):
     return ""
 
 
-def call_openrouter(model, user_content):
-    """Single attempt against one model. Returns parsed JSON dict, or raises
-    on any failure (HTTP error, bad shape, bad JSON) so the caller can decide
-    whether to fall through to the next model in the chain."""
+def call_openrouter(model, api_key, user_content):
+    """Single attempt against one model+key pair. Returns parsed JSON dict,
+    or raises on any failure (HTTP error, bad shape, bad JSON) so the caller
+    can decide whether to fall through to the next model/key."""
     payload = json.dumps({
         "model": model,
         "max_tokens": 1200,
@@ -155,7 +177,7 @@ def call_openrouter(model, user_content):
         data=payload,
         headers={
             "Content-Type": "application/json",
-            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+            "Authorization": f"Bearer {api_key}",
             "HTTP-Referer": "https://github.com/agent-forge",
             "X-Title": "Agent Forge",
         },
@@ -185,20 +207,21 @@ README excerpt:
 """
 
     for model in MODEL_FALLBACK_CHAIN:
-        try:
-            return call_openrouter(model, user_content)
-        except HTTPError as e:
-            body = e.read().decode("utf-8", errors="ignore")
-            print(f"  ! {model} failed (HTTP {e.code}): {body[:200]} — trying next model", file=sys.stderr)
-        except (KeyError, IndexError) as e:
-            print(f"  ! {model} returned an unexpected response shape: {e} — trying next model", file=sys.stderr)
-        except json.JSONDecodeError as e:
-            print(f"  ! {model} returned unparseable JSON: {e} — trying next model", file=sys.stderr)
-        except Exception as e:
-            print(f"  ! {model} failed ({type(e).__name__}: {e}) — trying next model", file=sys.stderr)
-        time.sleep(2)  # give the next free-tier provider a clean slate
+        for key_index, api_key in enumerate(OPENROUTER_API_KEYS):
+            try:
+                return call_openrouter(model, api_key, user_content)
+            except HTTPError as e:
+                body = e.read().decode("utf-8", errors="ignore")
+                print(f"  ! {model} (key #{key_index+1}) failed (HTTP {e.code}): {body[:200]} — trying next", file=sys.stderr)
+            except (KeyError, IndexError) as e:
+                print(f"  ! {model} (key #{key_index+1}) returned an unexpected response shape: {e} — trying next", file=sys.stderr)
+            except json.JSONDecodeError as e:
+                print(f"  ! {model} (key #{key_index+1}) returned unparseable JSON: {e} — trying next", file=sys.stderr)
+            except Exception as e:
+                print(f"  ! {model} (key #{key_index+1}) failed ({type(e).__name__}: {e}) — trying next", file=sys.stderr)
+            time.sleep(2)  # give the next free-tier provider/key a clean slate
 
-    print(f"  ! All models in the fallback chain failed for {candidate['id']}", file=sys.stderr)
+    print(f"  ! All model/key combinations failed for {candidate['id']}", file=sys.stderr)
     return None
 
 
@@ -228,7 +251,7 @@ def load_json(path, default):
 
 
 def main():
-    if not OPENROUTER_API_KEY:
+    if not OPENROUTER_API_KEYS:
         print("ERROR: OPENAI_API_KEY is not set.", file=sys.stderr)
         sys.exit(1)
 
