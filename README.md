@@ -11,6 +11,8 @@ more — filtered for what's actually maintained and useful, not hype.
 ![updates](https://img.shields.io/badge/updates-daily-2DA89A)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
+![Agent Forge screenshot](docs/assets/screenshot.png)
+
 ## Why this exists
 
 Lists like "10 GitHub repos that print money while you sleep" circulate
