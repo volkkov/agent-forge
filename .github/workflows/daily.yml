@@ -2,10 +2,14 @@ name: Daily collect & evaluate
 
 on:
   schedule:
-    # TEMP: every 10 minutes, just to confirm GitHub re-recognizes this
-    # schedule after several recent edits. Revert to the daily "17 6 * * *"
-    # cron once a scheduled (non-manual) run shows up in the Actions tab.
-    - cron: "*/10 * * * *"
+    # Two scheduled attempts per day, an hour apart, both off the top of
+    # the hour (GitHub deprioritizes/drops scheduled runs more often at
+    # :00, the highest-load minute). If the 06:17 run gets skipped or
+    # dropped due to GitHub-side load, the 07:23 run picks up the same
+    # day's work — scripts are idempotent (already-evaluated repos are
+    # skipped), so a second run on the same day does no harm.
+    - cron: "17 6 * * *"
+    - cron: "23 7 * * *"
   workflow_dispatch: {}
 
 permissions:
