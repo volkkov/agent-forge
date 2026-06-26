@@ -36,7 +36,10 @@
       "research_section": "Research",
       "research_intro": "Repos we found ourselves, beyond the seed list.",
       "no_results": "Nothing matches that search.",
-      "last_updated": "Last updated"
+      "last_updated": "Last updated",
+      "join_telegram": "Telegram",
+      "get_daily_finds": "Get daily finds in Telegram",
+      "share": "Share"
     },
     "ru": {
       "title": "Agent Forge",
@@ -61,7 +64,10 @@
       "research_section": "Research",
       "research_intro": "Репозитории, которые мы нашли сами, сверх стартового списка.",
       "no_results": "Ничего не найдено по запросу.",
-      "last_updated": "Обновлено"
+      "last_updated": "Обновлено",
+      "join_telegram": "Telegram",
+      "get_daily_finds": "Получай находки в Telegram",
+      "share": "Поделиться"
     }
   }
 }
