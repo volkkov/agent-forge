@@ -54,13 +54,10 @@ OPENROUTER_API_KEYS = _load_api_keys()
 
 # Tried in order. If the primary model errors out, is rate-limited, or times
 # out, we fall through to the next one rather than skipping the repo entirely.
-# All of these are free-tier on OpenRouter as of June 2026. openrouter/free
-# auto-picks among whatever free models currently support the request's
-# needs (including structured outputs); the explicit :free models below are
-# a backup in case the router itself is unavailable or picks something that
-# doesn't support our schema. Free-tier model availability rotates over
-# time — if every model in this chain starts 404ing, check
-# https://openrouter.ai/models/?q=free for current slugs.
+# openrouter/free auto-picks among whatever free models currently support the
+# request's needs (including structured outputs) — this is the most reliable
+# choice since explicit :free model slugs rotate out of the free tier within
+# weeks. The explicit :free models below are a backup only.
 MODEL_FALLBACK_CHAIN = [
     os.environ.get("OPENAI_MODEL", "openrouter/free"),
     "deepseek/deepseek-r1:free",
@@ -121,8 +118,8 @@ RESPONSE_SCHEMA = {
                 "type": "string",
                 "enum": [
                     "trading", "marketing", "browser-automation", "content-video",
-                    "design-ux", "agent-infra", "dev-tools", "data-research",
-                    "productivity", "finance-ops", "other",
+                    "design-ux", "memory-context", "agent-infra", "dev-tools",
+                    "data-research", "productivity", "finance-ops", "other",
                 ],
             },
             "verdict": {
@@ -158,10 +155,29 @@ def fetch_readme(owner, repo, default_branch="main"):
     return ""
 
 
+def validate_verdict_quality(data):
+    """Catches the failure modes we saw from weak free-tier models: empty
+    required text fields, or leaked reasoning/prompt artifacts spilling into
+    a field instead of the actual content. Raises ValueError to trigger
+    fallback to the next model if the response doesn't look usable."""
+    text_fields = ["summary_en", "summary_ru", "verdict_reason_en", "verdict_reason_ru"]
+    leak_markers = ["let's think", "[end eval]", "they expect:", "format:"]
+    for field in text_fields:
+        value = (data.get(field) or "").strip()
+        if not value:
+            raise ValueError(f"empty required field: {field}")
+        if any(marker in value.lower() for marker in leak_markers):
+            raise ValueError(f"field {field} looks like a leaked prompt/reasoning artifact: {value[:80]!r}")
+    for tag in data.get("tags", []):
+        if len(tag) > 60 or "]" in tag or "{" in tag:
+            raise ValueError(f"malformed tag, likely leaked artifact: {tag[:80]!r}")
+
+
 def call_openrouter(model, api_key, user_content):
     """Single attempt against one model+key pair. Returns parsed JSON dict,
-    or raises on any failure (HTTP error, bad shape, bad JSON) so the caller
-    can decide whether to fall through to the next model/key."""
+    or raises on any failure (HTTP error, bad shape, bad JSON, low-quality
+    output) so the caller can decide whether to fall through to the next
+    model/key."""
     payload = json.dumps({
         "model": model,
         "max_tokens": 1200,
@@ -190,7 +206,9 @@ def call_openrouter(model, api_key, user_content):
     raw_text = data["choices"][0]["message"]["content"]
     if not raw_text or not raw_text.strip():
         raise ValueError(f"empty response content (finish_reason={data['choices'][0].get('finish_reason')})")
-    return json.loads(raw_text)
+    parsed = json.loads(raw_text)
+    validate_verdict_quality(parsed)
+    return parsed
 
 
 def call_evaluator(candidate, readme_text):
