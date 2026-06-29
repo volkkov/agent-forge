@@ -42,6 +42,7 @@ SEARCH_TOPICS = [
     "llm-router",
     "ai-coding-agent",
     "prompt-engineering",
+    "agent-memory",
 ]
 
 SEARCH_KEYWORDS = [
@@ -54,6 +55,8 @@ SEARCH_KEYWORDS = [
     "free llm api",
     "ai video generation agent",
     "claude code plugin",
+    "ai agent memory",
+    "long term memory llm agent",
 ]
 
 # Known curated lists to mine for additional candidate links.
@@ -179,6 +182,18 @@ def main():
         time.sleep(1)
 
     for list_repo, path in AWESOME_LISTS:
+        # The awesome-list repo itself is often a genuinely useful directory
+        # in its own right (e.g. a maintained "free LLM APIs" list) — add it
+        # as a candidate too, not just a source of links to mine.
+        list_key = list_repo.lower()
+        if list_key not in candidates:
+            list_meta = repo_meta(list_repo)
+            list_cand = to_candidate(list_meta)
+            if list_cand:
+                list_cand["source"] = "awesome-list"
+                candidates[list_cand["id"]] = list_cand
+            time.sleep(0.5)
+
         links = fetch_readme_links(list_repo, path)
         print(f"  found {len(links)} links in {list_repo}")
         for full_name in links:
