@@ -310,6 +310,167 @@
     "last_checked": "2026-06-23"
   },
   {
+    "id": "vitali87/code-graph-rag",
+    "name": "code-graph-rag",
+    "url": "https://github.com/vitali87/code-graph-rag",
+    "owner": "vitali87",
+    "description_raw": "The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs",
+    "summary_en": "Code-Graph-RAG parses code with Tree-sitter, builds a language-agnostic knowledge graph, and provides natural‑language querying and editing of multi‑language repositories. It supports C, C++, Go, Java, JS, Lua, PHP, Python, Rust, TypeScript and Scala (in progress).",
+    "summary_ru": "Code-Graph‑RAG использует Tree‑sitter для парсинга кода, создаёт язык‑независимый граф знаний и позволяет выполнять естественно‑языковые запросы и правки в многоязычных репозиториях. Поддерживаются C, C++, Go, Java, JS, Lua, PHP, Python, Rust, TypeScript и Scala (в разработке).",
+    "category": "data-research",
+    "tags": [
+      "code-graph-rag",
+      "tree-sitter",
+      "knowledge-graph",
+      "multi-language",
+      "rag"
+    ],
+    "stars": 2308,
+    "forks": 384,
+    "last_commit_at": "2026-07-12T10:07:00Z",
+    "created_at": "2025-06-16T14:31:57Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "Recent activity (last push 2026‑07‑12), 2.3k stars, 384 forks, not archived. README contains concrete technical details: Tree‑sitter parsing, language support table, knowledge‑graph approach, demo gif, and installable PyPI package. No evidence of abandonment or broken build.",
+    "verdict_reason_ru": "Недавняя активность (последний коммит 2026‑07‑12), 2,3 k звёзд, 384 форков, не архивировано. В README приведены конкретные технические детали: парсинг Tree‑sitter, таблица поддержки языков, подход на базе графов знаний, демо‑gif и пакет PyPI. Нет признаков оставления или сбоя сборки.",
+    "risk_flags": [
+      "enterprise-support-link (code-graph-rag.com) suggests possible paid commercial offering; gitcgr.com visualization service may be a closed‑source backend; some badges are commented out due to account suspension, but this does not affect core functionality."
+    ],
+    "source": "github-search",
+    "first_seen": "2026-07-12",
+    "last_checked": "2026-07-12"
+  },
+  {
+    "id": "taisly/agent",
+    "name": "agent",
+    "url": "https://github.com/taisly/agent",
+    "owner": "taisly",
+    "description_raw": "Taisly Agent Kit: MCP server, CLI, SDK, and agent docs for publishing videos to TikTok, Reels, Shorts, X, and Facebook.",
+    "summary_en": "A JSON-first SDK for AI agents to publish videos to social platforms.",
+    "summary_ru": "SDK для автономных агентов обработки видеозаписей на соцплатформах по формату JSON.",
+    "category": "memory-context",
+    "tags": [
+      "social-media-publishing",
+      "mcp-server",
+      "api",
+      "ai-agency"
+    ],
+    "stars": 291,
+    "forks": 1,
+    "last_commit_at": "2026-07-06T08:18:09Z",
+    "created_at": "2026-06-11T04:33:30Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "The README provides concrete workflow steps (auth -> platforms -> validate -> confirm -> create) and recent activity (last push: 2026-07-06), indicating maintenance. No major red flags aside from standard commercial API monetization.",
+    "verdict_reason_ru": "README содержит конкретные шаги публикации и недавние обновления (2026-07-06), что указывает на активное поддержание. Возможные предупреждения ограничиваются стандартными коммерческими API-платежами.",
+    "risk_flags": [
+      "Commercial API with paid tiers that may impose usage limits",
+      "No explicit license terms in excerpt"
+    ],
+    "source": "awesome-list",
+    "first_seen": "2026-07-12",
+    "last_checked": "2026-07-12"
+  },
+  {
+    "id": "rich627/whatsapp-claude-plugin",
+    "name": "whatsapp-claude-plugin",
+    "url": "https://github.com/Rich627/whatsapp-claude-plugin",
+    "owner": "Rich627",
+    "description_raw": "Claude Code WhatsApp channel plugin — run AI directly from WhatsApp, voice transcription, remote tool approval, access control. No API keys, no Docker, just a linked device.",
+    "summary_en": "A maintained MCP server plugin enabling Claude Code integration with WhatsApp via Baileys, supporting message relay, voice transcription, and access control without API keys.",
+    "summary_ru": "Серверный плагин MCP, интегрирующий Claude Code с WhatsApp через Baileys, поддерживающий обмен сообщениями, транскрипцию голоса и контроль доступа без API-ключей.",
+    "category": "memory-context",
+    "tags": [
+      "whatsapp-integration",
+      "claude-code",
+      "mcp-server",
+      "voice-transcription",
+      "portable-ai"
+    ],
+    "stars": 36,
+    "forks": 8,
+    "last_commit_at": "2026-07-09T19:27:52Z",
+    "created_at": "2026-03-24T22:23:14Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "The repository shows recent activity (2026-07-09), active maintainership, and concrete technical implementation details in the README matching the repo description. The Anthropic publication adds credibility, though the client-side bug (#37933) is noted as a separate issue.",
+    "verdict_reason_ru": "Репозиторий демонстрирует активность (2026-07-09), регулярное обслуживание и реализацию технических деталей в README, соответствующих описанию. Публикация в Anthropic добавляет доверия, хотя клиентский баг (#37933) отмечен как отдельная проблема.",
+    "risk_flags": [
+      "Depends on Claude Code client stability (issue #37933 reported); no mention of data sovereignty (local execution claimed but unproven)"
+    ],
+    "source": "awesome-list",
+    "first_seen": "2026-07-12",
+    "last_checked": "2026-07-12"
+  },
+  {
+    "id": "gabelul/stitch-kit",
+    "name": "stitch-kit",
+    "url": "https://github.com/gabelul/stitch-kit",
+    "owner": "gabelul",
+    "description_raw": "Design superpowers for AI coding agents. 35 skills, 5 layers, 7 framework targets. Ideation, batch generation, design systems, iteration loops, and production conversion via Google Stitch MCP. Claude Code plugin + Codex CLI agent. The design intelligence layer your agent was missing.",
+    "summary_en": "A collection of agent skills and MCP integration for Google Stitch to assist AI coding agents in generating, iterating, and converting UI designs into production code.",
+    "summary_ru": "Набор навыков агента и интеграция MCP для Google Stitch, помогающая ИИ-агентам создавать, итерировать и конвертировать UI-дизайн в готовый программный код.",
+    "category": "design-ux",
+    "tags": [
+      "design-to-code",
+      "mcp",
+      "ui-ux",
+      "ai-agent-skills",
+      "google-stitch"
+    ],
+    "stars": 35,
+    "forks": 5,
+    "last_commit_at": "2026-06-09T08:24:26Z",
+    "created_at": "2026-02-18T17:02:56Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "The repository provides a concrete implementation of MCP tools and agent skills for a specific external service (Google Stitch). It includes installation scripts, architectural diagrams, and specific workflows (ideation to code conversion) rather than just marketing buzzwords. Despite the futuristic last commit date (2026), the technical detail suggests a functional integration tool.",
+    "verdict_reason_ru": "Репозиторий предоставляет конкретную реализацию инструментов MCP и навыков агента для стороннего сервиса (Google Stitch). Он включает скрипты установки, архитектурные схемы и описание рабочих процессов (от идеи до кода), а не просто маркетинговые лозунги. Несмотря на футуристическую дату последнего коммита (2026), техническая детализация указывает на функциональный инструмент интеграции.",
+    "risk_flags": [
+      "requires external Google Stitch API key",
+      "requires sign-in to external Google service"
+    ],
+    "source": "github-search",
+    "first_seen": "2026-07-12",
+    "last_checked": "2026-07-12"
+  },
+  {
+    "id": "the-swarm-corporation/newsagent",
+    "name": "NewsAgent",
+    "url": "https://github.com/The-Swarm-Corporation/NewsAgent",
+    "owner": "The-Swarm-Corporation",
+    "description_raw": "NewsAgent is an enterprise-grade news aggregation agent designed to fetch, query, and summarize news from multiple sources at scale. ",
+    "summary_en": "A Python-based news aggregation agent that uses NewsAPI and LLMs to fetch and summarize news based on specific queries.",
+    "summary_ru": "Python-агент для агрегации новостей, использующий NewsAPI и LLM для поиска и суммаризации новостей по запросам.",
+    "category": "data-research",
+    "tags": [
+      "news-aggregation",
+      "llm-agent",
+      "automation",
+      "python"
+    ],
+    "stars": 29,
+    "forks": 6,
+    "last_commit_at": "2025-10-13T18:19:18Z",
+    "created_at": "2024-09-21T18:19:55Z",
+    "ci_status": "unknown",
+    "health": "dead",
+    "verdict": "hype",
+    "verdict_reason_en": "The README relies heavily on 'enterprise-grade' buzzwords and marketing fluff for enterprise support, while the actual technical implementation is a simple wrapper around NewsAPI and an LLM. It is not a duplicate, but the 'features' described are standard for any LLM/API integration.",
+    "verdict_reason_ru": "README перегружен маркетинговыми клише вроде «enterprise-grade» и предложениями корпоративной поддержки, в то время как техническая реализация представляет собой простую обертку над NewsAPI и LLM. Это не дубликат, но описанный функционал является стандартным для любой интеграции LLM/API.",
+    "risk_flags": [
+      "reliance_on_external_apis",
+      "marketing_heavy_description"
+    ],
+    "source": "awesome-list",
+    "first_seen": "2026-07-12",
+    "last_checked": "2026-07-12"
+  },
+  {
     "id": "signet-ai/signetai",
     "name": "signetai",
     "url": "https://github.com/Signet-AI/signetai",
