@@ -310,6 +310,68 @@
     "last_checked": "2026-06-23"
   },
   {
+    "id": "bzdmathclub/bzd-math-modeling-skills",
+    "name": "bzd-math-modeling-skills",
+    "url": "https://github.com/BZDmathclub/bzd-math-modeling-skills",
+    "owner": "BZDmathclub",
+    "description_raw": "数学建模竞赛论文智能评审 Skill，支持 Codex 与 Claude Code，使用近五年国赛评阅细则、评分要点、评分概述等文件以及对应赛题进行蒸馏，并将真正在主观评审中涉及到的各种因素考虑在内，较为完备的复刻完整的评审流程，以便大家能够对自己的论文有较好的定位。",
+    "summary_en": "Provides a set of skills for reviewing, generating, and self-checking mathematical modeling competition papers, using distilled 2020‑2025 national contest rubrics to score papers and predict awards.",
+    "summary_ru": "Набор навыков для рецензирования, генерации и самопроверки работ по математическому моделированию, основанный на обобщении критериев оценки национальных конкурсов 2020‑2025 годов для оценки работ и прогнозирования наград.",
+    "category": "memory-context",
+    "tags": [
+      "math-modeling",
+      "paper-review",
+      "agent-skills",
+      "codex",
+      "claude"
+    ],
+    "stars": 106,
+    "forks": 4,
+    "last_commit_at": "2026-08-29T21:56:19Z",
+    "created_at": "2026-08-13T14:05:58Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "The README details concrete mechanisms: input/output tables, scoring formula, adjustment ranges, and references to specific directories (e.g., bzd-review-paper). Recent activity (last push 2026‑08‑29) shows maintenance. No archival notice or failing CI.",
+    "verdict_reason_ru": "В README приведены конкретные механизмы: таблицы ввода/вывода, формулы оценки, диапазоны корректировок и ссылки на каталоги (например, bzd-review-paper). Недавняя активность (последний пуш 2026‑08‑29) указывает на поддержку. Нет уведомления об архивации или ошибок CI.",
+    "risk_flags": [
+      "relies_on_paid_closed_backends (Codex, Claude Code)",
+      "requires external API keys for full functionality"
+    ],
+    "source": "github-search",
+    "first_seen": "2026-08-29",
+    "last_checked": "2026-08-29"
+  },
+  {
+    "id": "motlin/claude-code-plugins",
+    "name": "claude-code-plugins",
+    "url": "https://github.com/motlin/claude-code-plugins",
+    "owner": "motlin",
+    "description_raw": "A Claude Code skill for tracking and completing tasks from a markdown task list",
+    "summary_en": "Provides a collection of installable plugins for Claude Code and Codex that add task management, code quality checks, git helpers, session tracking, and safety guards.",
+    "summary_ru": "Предоставляет набор устанавливаемых плагинов для Claude Code и Codex, добавляющих управление задачами, проверки качества кода, вспомогательные функции Git, отслеживание сессий и средства защиты.",
+    "category": "design-ux",
+    "tags": [
+      "claude-code",
+      "plugins",
+      "task-management",
+      "dev-tools"
+    ],
+    "stars": 15,
+    "forks": 4,
+    "last_commit_at": "2026-08-29T21:56:16Z",
+    "created_at": "2025-10-20T11:51:16Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "The README lists concrete plugins with specific functionalities and install instructions; recent push date (2026-08-29) indicates active maintenance; no marketing hype or unverifiable claims.",
+    "verdict_reason_ru": "README содержит конкретные плагины с чётко описанной функциональностью и инструкциями по установке; недавняя дата коммита (2026-08-29) свидетельствует о поддерживаемом проекте; отсутствуют маркетинговые преувеличения или непроверяемые утверждения.",
+    "risk_flags": [],
+    "source": "github-search",
+    "first_seen": "2026-08-29",
+    "last_checked": "2026-08-29"
+  },
+  {
     "id": "synthetic-sciences/openscience",
     "name": "openscience",
     "url": "https://github.com/synthetic-sciences/openscience",
