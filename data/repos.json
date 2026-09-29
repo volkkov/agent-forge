@@ -310,6 +310,39 @@
     "last_checked": "2026-06-23"
   },
   {
+    "id": "jakubantalik/transitions.dev",
+    "name": "transitions.dev",
+    "url": "https://github.com/Jakubantalik/transitions.dev",
+    "owner": "Jakubantalik",
+    "description_raw": "UI montion AI agent, a library of 43+ crafted transitions, a skill that fits your workflow.",
+    "summary_en": "Interactive library of 18+ copy-ready CSS transitions with a CLI (npx transitions-dev add), an AI-agent skill (npx skills add), and a live 'Refine' panel that injects a timeline into your running app for agent-assisted motion tuning. Free transitions need no account; Pro transitions require passwordless browser sign-in.",
+    "summary_ru": "Интерактивная библиотека из 18+ готовых CSS-переходов с CLI (npx transitions-dev add), навыком для AI-агентов (npx skills add) и панелью «Refine», которая внедряет таймлайн в запущенное приложение для агентной настройки анимаций. Бесплатные переходы не требуют аккаунта; Pro-переходы — парольный вход через браузер.",
+    "category": "dev-tools",
+    "tags": [
+      "css-transitions",
+      "cli-tool",
+      "ai-agent-skill",
+      "motion-design",
+      "freemium"
+    ],
+    "stars": 4396,
+    "forks": 186,
+    "last_commit_at": "2026-09-29T21:04:38Z",
+    "created_at": "2026-04-21T21:01:08Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "Concrete, reproducible mechanism: index.html showcases each transition with copy buttons emitting self-contained CSS snippets (custom properties, t-* classes, prefers-reduced-motion guard). CLI publishes to npm as transitions-dev; skill payload in skills/transitions-dev/ is regenerated from index.html via build/extract.mjs. Refine tool (transitions-refine npm package) injects a live panel + local relay. Recent last-push (2026-09-29), not archived, 4.4k stars — actively maintained. Transparent freemium model disclosed in README; no hidden crypto/wallet requirements.",
+    "verdict_reason_ru": "Конкретный воспроизводимый механизм: index.html демонстрирует каждый переход с кнопками копирования, выдающими автономные CSS-сниппеты (custom properties, классы t-*, защита prefers-reduced-motion). CLI опубликован в npm как transitions-dev; навык в skills/transitions-dev/ регенерируется из index.html через build/extract.mjs. Refine (пакет transitions-refine) внедряет живую панель и локальный релей. Недавний пуш (2026-09-29), не архивирован, 4.4k звёзд — проект поддерживается. Модель freemium описана открыто; скрытых крипто/кошельков нет.",
+    "risk_flags": [
+      "freemium_pro_tier_requires_auth",
+      "pro_transitions_fetched_from_authenticated_api"
+    ],
+    "source": "github-search",
+    "first_seen": "2026-09-29",
+    "last_checked": "2026-09-29"
+  },
+  {
     "id": "squirrelscan/skills",
     "name": "skills",
     "url": "https://github.com/squirrelscan/skills",
