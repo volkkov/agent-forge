@@ -310,6 +310,35 @@
     "last_checked": "2026-06-23"
   },
   {
+    "id": "dakotamurphyucf/ochat",
+    "name": "ochat",
+    "url": "https://github.com/dakotamurphyucf/ochat",
+    "owner": "dakotamurphyucf",
+    "description_raw": "Text-first toolkit for building reproducible, composable LLM workflows as plain files in OCaml.",
+    "summary_en": "Ochat is an OCaml-based toolkit that lets you define AI agents in plain text files (ChatMarkdown) with built‑in tools for file I/O, web ingestion, etc., and run them locally or as a service using your own LLM API key.",
+    "summary_ru": "Ochat — это набор инструментов на OCaml, позволяющий определять ИИ‑агентов в обычных текстовых файлах (ChatMarkdown) со встроенными инструментами для работы с файлами, загрузки веб‑страниц и т.п., и запускать их локально или как сервис, используя собственный ключ API LLM.",
+    "category": "marketing",
+    "tags": [
+      "ocaml",
+      "llm-workflow",
+      "text-definition",
+      "open-source"
+    ],
+    "stars": 30,
+    "forks": 3,
+    "last_commit_at": "2026-10-09T23:08:58Z",
+    "created_at": "2024-09-15T01:04:09Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "The README provides a concrete, reproducible workflow: agents are defined via XML‑like tags in text files, uses built‑in tools, requires only OCaml/opam and an OpenAI API key. Recent push (2026‑10‑09) and non‑archived status show active maintenance; no marketing hype or unverifiable claims are present.",
+    "verdict_reason_ru": "В README описан конкретный воспроизводимый рабочий процесс: агенты задаются через теги типа XML в обычных текстовых файлах, используются встроенные инструменты, требуется только OCaml/opam и ключ API OpenAI. Недавний коммит (2026‑10‑09) и отсутствие архивации указывают на активную поддержку; нет маркетингового преувеличения или непроверяемых заявлений.",
+    "risk_flags": [],
+    "source": "github-search",
+    "first_seen": "2026-10-09",
+    "last_checked": "2026-10-09"
+  },
+  {
     "id": "slow-stack/mneme",
     "name": "mneme",
     "url": "https://github.com/slow-stack/mneme",
