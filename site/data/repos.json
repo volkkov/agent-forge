@@ -310,6 +310,138 @@
     "last_checked": "2026-06-23"
   },
   {
+    "id": "zhuyansen/new-term-radar",
+    "name": "new-term-radar",
+    "url": "https://github.com/zhuyansen/new-term-radar",
+    "owner": "zhuyansen",
+    "description_raw": "Daily radar for new AI terms: names of new models, products and repos, caught on X, Hugging Face, GitHub and sitemaps before keyword tools list them.",
+    "summary_en": "Monitors six public signals (X, Hugging Face trending, GitHub breakout repos, AI-directory sitemaps, newly-indexed domains, and ask-for-tool queries on Reddit/X/Stack Exchange/Freelancer) to surface new AI model/product/repo names days before keyword tools pick them up. Ships as a CLI, three Agent Skills, and an MCP server; configurable via config.json.",
+    "summary_ru": "Отслеживает шесть открытых сигналов (X, тренды Hugging Face, прорывные GitHub-репо, карты сайтов каталогов ИИ, недавно проиндексированные домены, запросы «ищу инструмент» на Reddit/X/Stack Exchange/Freelancer), чтобы находить названия новых ИИ-моделей/продуктов/репозиториев за дни до появления в ключевых инструментах. Доступен как CLI, три Agent Skills и MCP-сервер; настраивается через config.json.",
+    "category": "dev-tools",
+    "tags": [
+      "seo",
+      "keyword-research",
+      "ai-monitoring",
+      "mcp-server",
+      "cli-tool"
+    ],
+    "stars": 2121,
+    "forks": 638,
+    "last_commit_at": "2026-11-02T23:42:54Z",
+    "created_at": "2026-10-12T07:11:01Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "README describes a concrete, reproducible mechanism with a detailed signal table (what each catches, auth needs, cost). Provides a verifiable example (Niko1221/Strata, dates, star counts). Active maintenance: 2,121 stars, 638 forks, last push 2026-11-02, on PyPI and multiple registries. MIT license, no hidden backend. Not a duplicate — niche is early-term detection via multi-source signal fusion.",
+    "verdict_reason_ru": "README описывает конкретный воспроизводимый механизм с детальной таблицей сигналов (что ловит, какая авторизация, стоимость). Приводит проверяемый пример (Niko1221/Strata, даты, количество звёзд). Активная поддержка: 2 121 звезда, 638 форков, последний пуш 2026-11-02, есть в PyPI и реестрах. MIT-лицензия, никакого скрытого бэкенда. Не дубликат — ниша: раннее обнаружение терминов через fusión множественных сигналов.",
+    "risk_flags": [
+      "Requires paid AIsa API key for X and New-sites signals (≈ $0.003/account/run and ≈ $0.13/query weekly)",
+      "Future-dated metadata (created/pushed in 2026) may indicate test data or clock skew — verify independently"
+    ],
+    "source": "awesome-list",
+    "first_seen": "2026-11-06",
+    "last_checked": "2026-11-06"
+  },
+  {
+    "id": "prasenjeet-symon/ogcode",
+    "name": "ogcode",
+    "url": "https://github.com/prasenjeet-symon/ogcode",
+    "owner": "prasenjeet-symon",
+    "description_raw": "An open-source, local-first AI teammate and agent operating environment for turning intent into completed work—with tools, memory, permissions, and human oversight.",
+    "summary_en": "Ogcode is a self-hosted, browser-based AI coding agent written in Go that indexes your codebase, runs tools (build/test/search), supports multiple LLM providers (including local Ollama), and offers three permission modes (Ask/Auto/Yolo) per session. It installs via curl, brew, winget, Go, or Docker and exposes a web UI on localhost:9595.",
+    "summary_ru": "Ogcode — это самохостимый AI-агент для кодинга в браузере, написанный на Go: он индексирует кодовую базу, запускает инструменты (билд/тесты/поиск), работает с разными LLM-провайдерами (включая локальный Ollama) и даёт три режима прав доступа (Ask/Auto/Yolo) на сессию. Установка через curl, brew, winget, Go или Docker, веб-UI на localhost:9595.",
+    "category": "agent-infra",
+    "tags": [
+      "ai-coding-agent",
+      "self-hosted",
+      "browser-ui",
+      "go",
+      "ollama-support",
+      "local-first"
+    ],
+    "stars": 147,
+    "forks": 15,
+    "last_commit_at": "2026-11-06T20:12:55Z",
+    "created_at": "2026-05-01T10:24:31Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "README provides concrete installation steps, CLI commands (ogcode run, ogcode index), configuration schema, and architecture details (project indexing, memory, web search, MCP, rich rendering). Recent releases, multi-platform packaging (brew, winget, Docker Hub/ghcr), and active docs site indicate maintenance. No archival notice or failing CI evidence.",
+    "verdict_reason_ru": "README содержит конкретные инструкции по установке, CLI-команды (ogcode run, ogcode index), схему конфигурации и детали архитектуры (индексация проекта, память, веб-поиск, MCP, рендеринг). Наличие недавних релизов, пакетов для нескольких платформ (brew, winget, Docker Hub/ghcr) и активного сайта документации говорит об актуальной поддержке. Нет признаков архивации или падающего CI.",
+    "risk_flags": [
+      "OGX subscription plan from OG Lab mentioned — paid gateway for models behind open-source core; review terms if model cost/lock-in matters"
+    ],
+    "source": "github-search",
+    "first_seen": "2026-11-06",
+    "last_checked": "2026-11-06"
+  },
+  {
+    "id": "smokeeaasd/flawless-ui-ux",
+    "name": "flawless-ui-ux",
+    "url": "https://github.com/smokeeaasd/flawless-ui-ux",
+    "owner": "smokeeaasd",
+    "description_raw": "A UI/UX skill for coding agents to build distinctive, usable interfaces.",
+    "summary_en": "A skills wrapper that hands off its actual logic to the skills.sh ecosystem platform rather than shipping working UI-UX guidance.",
+    "summary_ru": "Незваный гость в каталоге Agent Forge — README basically just links out to skills.sh and npm; it publishes a CLI package but provides no concrete design guidance mechanism.",
+    "category": "marketing",
+    "tags": [
+      "ui-ux-skill",
+      "marketing",
+      "thin",
+      "discontinued"
+    ],
+    "stars": 45,
+    "forks": 0,
+    "last_commit_at": "2026-11-06T16:42:45Z",
+    "created_at": "2026-11-03T14:36:42Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "broken",
+    "verdict_reason_en": "The README is almost entirely link badges (skills.sh install, npm version/downloads) plus a generic sentence about building interfaces around audience/content/identity. There is no file tree, no skill manifest, no usage example, no reference to any internal artifact that demonstrates it actually teaches an agent how to produce layouts or component patterns. The npm download badge is also not inspectable here, so 'CLI downloads per month' can't be verified either way. Combined with 0 forks and a name that literally includes the word 'flawless', this reads as distribution marketing rather than engineering.",
+    "verdict_reason_ru": "README — почти целикомBADGES и ссылки (skills.sh install badge, npm publish badge). Отсутствуют финкцию ядра: нет сопроводительного манифеста, usage example или документации по механизму работы. При этом Fork = 0, а название содержит «flawless» — сочетание маркетинговой самоназванности и отсутствие прорыва к реальному механизму делает проект типовым «выкинь на рынок» пакетом, который не подкреплен ничем, кроме ссылок.",
+    "risk_flags": [
+      "Indirect dependency on skills.sh as the runtime host (repo itself appears generic, with only badge links)",
+      "npm 'downloads per month' badge not independently verifiable from the provided excerpt"
+    ],
+    "source": "github-search",
+    "first_seen": "2026-11-06",
+    "last_checked": "2026-11-06"
+  },
+  {
+    "id": "pablovip/vipcode",
+    "name": "vipcode",
+    "url": "https://github.com/PabloVip/vipcode",
+    "owner": "PabloVip",
+    "description_raw": "Agente de programación para la terminal, gratis y en español: usa las IA gratuitas de más de 20 proveedores (Gemini, NVIDIA, Cerebras, OpenRouter…), funciona sin claves y cambia solo de una a otra cuando se agota. Free AI coding agent for the terminal.",
+    "summary_en": "vipcode is a frontend-oriented AI coding agent CLI claimed to route free, no-key models across 20+ providers with automatic failover. The README is almost entirelymarketing copy; no backend code is referenced in the excerpt, no verifiable mechanism or benchmark is described, and the README itself declares a GitHub CI + daily monitoring workflow but contains no feature code or usage example that would let an independent reviewer confirm the failover claim.",
+    "summary_ru": "vipcode — CLI агенту на ШИ, претендующий на разветвление бесплатных моделей across 20+ провайдеров без ключей. README почти целиком — маркетинг; механизм не описан кристально, ни benchmarks, ни воспроизводимых деталей. ",
+    "category": "memory-context",
+    "tags": [
+      "cli-agent",
+      "multi-provider-router",
+      "marketing-heavy",
+      "no-backend-exposed"
+    ],
+    "stars": 15,
+    "forks": 2,
+    "last_commit_at": "2026-11-06T18:16:33Z",
+    "created_at": "2026-10-29T17:26:02Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "hype",
+    "verdict_reason_en": "The README's first substantive section ('En qué destaca') is a stacked marketing list of perks (free forever, never stuck, long-context fallback, Spanish UI, default safety prompts, daily maintenance). None of the claims are tied to verifiable code: there is no API list with endpoint URLs, no pricing table, no failover algorithm described, and 'graciasgratuitos de más de 20 proveedores' conflates providers known for paid/restricted keys (NVIDIA, Cerebras, OpenRouter) with truly free one-off demos (LLM7, Pollinations, Kilo Gateway). Stars (15) and forks (2) are modest and self-reported distribution numbers; last pushed 2026-11-06 is plausible given the repo was created 2026-10-29, but the README excerpt ends mid-sentence with '/bug opening a browser' and no further prose from which to judge real maintenance velocity.",
+    "verdict_reason_ru": "README начинен маркетингом, ни одного воспроизводимого механизма не дано.Claimы о разветвлении 20+ провайдеров и бесплатности объединяют провайдеры с платными/ограниченными ключами (NVIDIA, Cerebras) и sporadic-free демо (LLM7, Pollinations), что само по себеือนить оπιлянием.",
+    "risk_flags": [
+      "README uses bold/emoji marketing language ('Gratis de verdad', 'No te deja tirado', 'un catálogo vigilado a diario', 'worlds most powerful' implicit in breadth claims) without backing data.",
+      "Description duplicates established patterns from widely distributed coding-agent repos (Claude Code / Aider style) without naming any competitor or differentiation claim; relevant to risk #4.",
+      "Promotes 'AGPL-3.0 license' while emphasizing free/open use — AGPL copyleft could surprise contributors who expect MIT/ISC; README asks users to contribute ('Colaborar') despite copyleft terms.",
+      "No TOS/attribution requirements documented despite promoting 'free providers'; risk of depend on third-party vendor endpoints that may change without notice, plus missing attribution claim that readers may reasonably infer."
+    ],
+    "source": "github-search",
+    "first_seen": "2026-11-06",
+    "last_checked": "2026-11-06"
+  },
+  {
     "id": "strapi/design-system",
     "name": "design-system",
     "url": "https://github.com/strapi/design-system",
