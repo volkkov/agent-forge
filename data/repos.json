@@ -310,6 +310,37 @@
     "last_checked": "2026-06-23"
   },
   {
+    "id": "mhfed/vn-law-check",
+    "name": "vn-law-check",
+    "url": "https://github.com/mhfed/vn-law-check",
+    "owner": "mhfed",
+    "description_raw": "Audit pháp lý website theo luật Việt Nam (BVDLCN 91/2025, TMĐT 122/2025, ANM 116/2025, AI 134/2025) cho Claude Code, Cursor, Copilot, Windsurf, Cline",
+    "summary_en": "The repository provides an open‑source tool that lets AI coding agents audit Vietnamese websites and apps for compliance with the 2025‑2026 legal framework and return a prioritized report.",
+    "summary_ru": "Репозиторий предлагает открытый инструмент, позволяющий AI‑агентам проверять соответствие вьетнамских сайтов и приложений закону 2025‑2026 и выдавать приоритетный отчет.",
+    "category": "trading",
+    "tags": [
+      "useful",
+      "maintained",
+      "open-source",
+      "compliance",
+      "vietnam-law",
+      "ai-audit"
+    ],
+    "stars": 507,
+    "forks": 114,
+    "last_commit_at": "2026-11-13T16:40:01Z",
+    "created_at": "2026-11-02T09:22:02Z",
+    "ci_status": "unknown",
+    "health": "active",
+    "verdict": "useful",
+    "verdict_reason_en": "The README gives concrete, reproducible steps (marketplace add or install.sh script), specifies exact legal references (e.g., Luat 91/2025, NĐ 356/2025), includes a real example report with 🔴/🟡/🟢 codes, and shows a recent last‑push date of 2026‑11‑13, indicating active maintenance. No paid backend, crypto, or misleading performance claims are present, and the disclaimer clarifies that the AI output is for reference only.",
+    "verdict_reason_ru": "В README приведены конкретные шаги установки (добавление в marketplace или запуск install.sh), указаны точные нормативные ссылки (например, Luat 91/2025, NĐ 356/2025), приведён пример отчета с кодами 🔴/🟡/🟢 и дата последнего коммита — 2026‑11‑13, что свидетельствует об активном развитии. Нет платных сервисов, криптовалютных требований или пре夸тельных утверждений, а также есть предупреждение о том, что результат AI лишь справочный.",
+    "risk_flags": [],
+    "source": "awesome-list",
+    "first_seen": "2026-11-18",
+    "last_checked": "2026-11-18"
+  },
+  {
     "id": "jentic/jentic-public-apis",
     "name": "jentic-public-apis",
     "url": "https://github.com/jentic/jentic-public-apis",
