@@ -310,6 +310,42 @@
     "last_checked": "2026-06-23"
   },
   {
+    "id": "dpearson2699/swift-ios-skills",
+    "name": "swift-ios-skills",
+    "url": "https://github.com/dpearson2699/swift-ios-skills",
+    "owner": "dpearson2699",
+    "description_raw": "Agent Skills for iOS 26+, Swift 6.3, SwiftUI, and modern Apple frameworks",
+    "summary_en": "A collection of 86 self-contained 'Agent Skills' markdown modules teaching coding agents modern Apple platform APIs (Swift 6.3, SwiftUI, SwiftData, StoreKit 2, Foundation Models, async/await), installable via a `npx skills` CLI or as a Claude Code plugin.",
+    "summary_ru": "Коллекция из 86 самодостаточных markdown-модулей «Agent Skills», обучающих кодовых агентов современным API Apple-платформ (Swift 6.3, SwiftUI, SwiftData, StoreKit 2, Foundation Models, async/await); устанавливается через CLI `npx skills` или как плагин Claude Code.",
+    "category": "agent-infra",
+    "tags": [
+      "agent-skills",
+      "swift",
+      "swiftui",
+      "ios",
+      "claude-code",
+      "documentation-bundle",
+      "source-available-license"
+    ],
+    "stars": 1318,
+    "forks": 65,
+    "last_commit_at": "2026-07-31T20:22:45Z",
+    "created_at": "2026-03-03T00:42:44Z",
+    "ci_status": "unknown",
+    "health": "stale",
+    "verdict": "useful",
+    "verdict_reason_en": "Concrete mechanism, not just slogans: the README specifies an exact skill count (86), an install path (`npx skills add ... --all` / `--skill <name>`), per-skill independence ('Every skill is self-contained. No skill depends on another'), a documented compatibility list, and a pointer to CHANGELOG.md. Maintenance is well-evidenced: created 2026-03-03 and last pushed 2026-07-31, i.e. roughly five months of continuous activity, plus 1.3k stars / 65 forks (fork ratio is low, consistent with a consume-only content repo rather than fake engagement). No paid/closed backend, no wallet/crypto requirements, no CI claims that can't be checked. It is a curated documentation/prompt bundle rather than a novel tool, but that is what the README says it is, so there is no misrepresentation.",
+    "verdict_reason_ru": "Механизм конкретен, а не рекламен: в README указано точное число скиллов (86), способ установки (`npx skills add ... --all` / `--skill <name>`), независимость каждого скилла («Every skill is self-contained. No skill depends on another»), список совместимых агентов и ссылка на CHANGELOG.md. Поддержка подтверждается данными: создан 2026-03-03, последний push 2026-07-31 — около пяти месяцев непрерывной активности; 1.3k звёзд при 65 форках (низкое соотношение типично для потребляемого контент-репозитория, а не накрученной активности). Нет платного/закрытого бэкенда, нет требований криптокошелька, нет непроверяемых заявлений о производительности. Это курируемый набор документации/промптов, а не новый инструмент, но README именно так его и описывает — введения в заблуждение нет.",
+    "risk_flags": [
+      "License is PolyForm Perimeter 1.0.0 — source-available, not OSI open source; it restricts use in competing products, while the README's 'open Agent Skills standard' framing could lead readers to assume permissive licensing.",
+      "Content is tightly pinned to unreleased/new platform versions (iOS 26+, Swift 6.3); value decays fast if the author stops updating, and correctness of API guidance is not independently verifiable from the README.",
+      "'No deprecated patterns' and 'optimized for iOS 26+' are author claims with no stated review or verification process."
+    ],
+    "source": "awesome-list",
+    "first_seen": "2026-11-24",
+    "last_checked": "2026-11-24"
+  },
+  {
     "id": "innei/ryugi",
     "name": "ryugi",
     "url": "https://github.com/Innei/ryugi",
